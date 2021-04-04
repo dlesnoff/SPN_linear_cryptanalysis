@@ -56,12 +56,12 @@ class sbox:
         pass
 
 
-s_box = sbox(s_box_table, 4, 4)
-
-for i in range(16):
-    print(f"i : {s_box.relationship('1001', '0100', i)}")
-print(s_box.number_correct_output_relation("1001", "0100"))
-print(s_box.number_correct_output_relation("0011", "1001"))
-print(s_box.bias("0011", "1001"))
-linear_approximation_table = s_box.compute_linear_approximation_table()
-print(linear_approximation_table)
+if __name__ == '__main__':
+    s_box = sbox(s_box_table, 4, 4)
+    for i in range(16):
+        print(f"i : {s_box.relationship('1001', '0100', i)}")
+    print(s_box.number_correct_output_relation("1001", "0100"))
+    print(s_box.number_correct_output_relation("0011", "1001"))
+    print(s_box.bias("0011", "1001"))
+    linear_approximation_table = s_box.compute_linear_approximation_table()
+    print(linear_approximation_table)
