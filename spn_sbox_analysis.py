@@ -6,7 +6,7 @@ s_box_table = (
 )
 
 
-class sbox:
+class Sbox:
 
     def __init__(self, table: tuple, input_length: int, output_length: int):
         self.table = table[:]
@@ -57,7 +57,7 @@ class sbox:
 
 
 if __name__ == '__main__':
-    s_box = sbox(s_box_table, 4, 4)
+    s_box = Sbox(s_box_table, 4, 4)
     for i in range(16):
         print(f"i : {s_box.relationship('1001', '0100', i)}")
     print(s_box.number_correct_output_relation("1001", "0100"))
