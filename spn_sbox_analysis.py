@@ -18,10 +18,8 @@ class Sbox:
 
     def relationship(self, mask_input: str, mask_output: str, n: int) -> int:
         """ Compute the values of specific input and output random variables """
-        x = str(bin(n))[2:].zfill(4)
-        # print(f'x = ', x)
-        y = str(bin(self.table[n])[2:]).zfill(4)
-        # print(f'y = ', y)
+        x = str(bin(n))[2:].zfill(self.input_length)
+        y = str(bin(self.table[n])[2:]).zfill(self.output_length)
         value = 0
         for index in range(self.input_length):
             if mask_input[index] == "1":
@@ -46,13 +44,13 @@ class Sbox:
     def compute_linear_approximation_table(self) -> np.ndarray:
         table = np.empty((2**self.input_length, 2**self.output_length), dtype=int)
         for a in range(2**self.input_length):
-            mask_input = str(bin(a))[2:].zfill(4)
+            mask_input = str(bin(a))[2:].zfill(self.input_length)
             for b in range(2**self.output_length):
-                mask_output = str(bin(b))[2:].zfill(4)
+                mask_output = str(bin(b))[2:].zfill(self.output_length)
                 table[a, b] = self.number_correct_output_relation(mask_input, mask_output)
         return table
 
-    def print_linear_approximation_table(a, b):
+    def print_linear_approximation_table(self):
         pass
 
 
